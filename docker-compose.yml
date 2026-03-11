@@ -1,0 +1,15 @@
+services:
+  geo-filter:
+    build: .
+    image: geo-filter:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount the directory that holds GeoLite2-Country.mmdb.
+      # The update script writes here; the watcher thread picks up changes.
+      - ./data:/data
+    environment:
+      MMDB_PATH: /data/GeoLite2-Country.mmdb
+      LISTEN_HOST: "0.0.0.0"
+      LISTEN_PORT: "8080"
+      DB_RELOAD_INTERVAL: "3600"   # check for DB file changes every hour
