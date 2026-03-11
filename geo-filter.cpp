@@ -130,7 +130,6 @@ private:
 
 // DatabaseWatcher
 // Runs in background; hot-reloads the MMDB when the file's mtime changes.
-// This is the mechanism that picks up weekly MaxMind releases placed in /data/.
 class DatabaseWatcher {
 public:
     DatabaseWatcher(GeoDatabase& db, const std::string& path, int interval_sec)
